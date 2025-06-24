@@ -1,2 +1,0 @@
-# Shucayb-xikmad
-MIDMIMO DOON.
