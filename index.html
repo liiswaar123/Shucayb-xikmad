@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html><html lang="so">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DHALINTA MIDNIMO - Maqaalo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f7f9;
+            color: #333;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            background: linear-gradient(to right, #005f73, #0a9396);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 2.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        h2 {
+            color: #005f73;
+        }
+        .article {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        .author {
+            font-style: italic;
+            color: #0a9396;
+            margin-top: 10px;
+        }
+        form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        form button {
+            margin-top: 15px;
+            background: #005f73;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background: #0a9396;
+        }
+        .pending-article {
+            background: #e0f7f4;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 5px solid #0a9396;
+        }
+        .pending-article button {
+            background: #0a9396;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        .pending-article button:hover {
+            background: #065f46;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-weight: 600;
+            color: #0a9396;
+        }
+        .contact-box {
+            background: #e0f7f4;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 30px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body><h1>DHALINTA MIDNIMO</h1>
+<p style="text-align:center;">Goobta Maqaalada iyo Fikradaha Dhalinyarada</p>
+
+<section>
+    <h2>Fikrada la gudbiyay</h2>
+    <div id="articles"></div>
+</section>
+
+<section>
+    <h2>Soo Gudbi Maqaal</h2>
+    <form id="articleForm">
+        <label for="name">Magacaaga:</label>
+        <input type="text" id="name" required placeholder="Ku qor magacaaga..." />
+
+        <label for="location">Magaalada aad degantahay:</label>
+        <input type="text" id="location" required placeholder="Ku qor magaalada aad joogto..." />
+
+        <label for="title">Cinwaanka Maqaalka:</label>
+        <input type="text" id="title" required placeholder="Ku qor cinwaanka maqaalka..." />
+
+        <label for="content">Mawduuca Maqaalka:</label>
+        <textarea id="content" rows="6" required placeholder="Qor qoraalka maqaalka..."></textarea>
+
+        <button type="submit">Soo Gudbi</button>
+    </form>
+
+    <div class="contact-box">
+        Waxaad nagala soo xidhiidhi kartaa:<br />
+        <a href="mailto:Dhalintamidnimo.Gmail.com">Dhalintamidnimo.Gmail.com</a><br />
+        +252637578342
+    </div>
+</section>
+
+<section>
+    <h2>Maqaalada Sugaya Ogolaanshaha (Adiga Kaliya)</h2>
+    <div id="pendingArticles"></div>
+</section>
+
+<script>
+    let articles = [
+        { title: "Midnimadu waa Aasaaska Guusha", content: "Dhalinyarada Soomaaliyeed waa inay ka shaqeeyaan midnimo dhab ah si ay uga gudbaan caqabadaha horyaalla.", author: "Abdi Maxamed - Hargeysa" },
+        { title: "Kobcinta Maskaxda Dhalinyarada", content: "Waxbarashada iyo akhriska waa tiir lagu gaadhi karo horumar guud.", author: "Ikraan Cabdi - Jigjiga" },
+        { title: "Halganka Qurbaha iyo Rajada Dhalinyarada", content: "Qurbaha waa meel fursado leh balse caqabado badanina way jiraan.", author: "Ahmed Farah - London" },
+        { title: "Waa maxay doorka dhalinyaradu ku leeyihiin siyaasadda?", content: "Haddii aan ka qayb qaadan wayno, kuwa duqduqda ah baa inoo talin doona.", author: "Deeqa Xasan - Muqdisho" },
+        { title: "Qabyaaladda iyo Qaranjabkeeda", content: "Qabyaaladdu waxay dishaa niyada midnimada, dhalinyaradana waa inay ka fogaadaan.", author: "Khaalid Maxamed - Jabuuti" },
+        { title: "Kalsoonida Nafta iyo Horumarka", content: "Qofka is-aaminsani wuxuu gaari karaa meel sare.", author: "Hodan Ismaaciil - Nairobi" },
+        { title: "Ka Shaqaynta Mustaqbalka", content: "Qof walba ha leeyahay yool cad oo uu hiigsado.", author: "Faysal Barre - Hargeysa" },
+        { title: "Dib-u-eegista Nolosha Qurbaha", content: "Dhalinyarada qurba joogta ah waa inay door muuqda ka qaataan horumarinta dalkooda.", author: "Samiira Axmed - Canada" },
+        { title: "Dhalinyarada iyo Tiknoolajiyada", content: "Tiknoolajiyadu waa aalad horumar keeni karta haddii si fiican loo adeegsado.", author: "Maxamed Cali - Jigjiga" },
+        { title: "Sidee dhalinyaradu isu abaabuli karaan?", content: "Ururro dhalinyaro oo firfircoon ayaa ah furaha guusha.", author: "Ruqiya Xasan - Burco" },
+        { title: "Xikmad iyo Dulqaad", content: "Qofka xikmada leh wuu dulqaataa, wuuna guuleystaa.", author: "Yuusuf Cabdi - Muqdisho" },
+        { title: "Afka Hooyo iyo Dhalinyarada", content: "Luuqaddaadu waa aqoonsigaaga, ha dayacin.", author: "Fartuun Aadan - Hargeysa" },
+        { title: "Isbeddelka Bilowga ah", content: "Haddii aad rabto isbeddel, adiga bilow.", author: "Cabdiraxmaan Cabdi - Jigjiga" },
+        { title: "U Hiilli Walaalkaaga", content: "Midnimo waxay ka timaaddaa isgarab istaagga.", author: "Naciima Cabdi - Diri Dawa" },
+        { title: "Xusuuso Halyeeyadii Hore", content: "Dhalinyaradu ha ogaadaan taariikhda dadka dalkooda u halgamay.", author: "Khadar Xasan - Sweden" }
+    ];
+
+    let pendingArticles = [];
+
+    const articlesDiv = document.getElementById('articles');
+    const pendingDiv = document.getElementById('pendingArticles');
+    const form = document.getElementById('articleForm');
+
+    function renderArticles() {
+        articlesDiv.innerHTML = '';
+        if(articles.length === 0) {
+            articlesDiv.innerHTML = '<p>Ma jiraan maqaallo la ogolaaday.</p>';
+            return;
+        }
+        articles.forEach((a,i) => {
+            const div = document.createElement('div');
+            div.className = 'article';
+            div.innerHTML = `<h3>${a.title}</h3><p>${a.content}</p><p class="author">Qoraa: ${a.author}</p>`;
+            articlesDiv.appendChild(div);
+        });
+    }
+
+    function renderPending() {
+        pendingDiv.innerHTML = '';
+        if(pendingArticles.length === 0) {
+            pendingDiv.innerHTML = '<p>Ma jiraan maqaallo sugaya ogolaansho.</p>';
+            return;
+        }
+        pendingArticles.forEach((a,i) => {
+            const div = document.createElement('div');
+            div.className = 'pending-article';
+            div.innerHTML = `
+                <strong>${a.title}</strong><br/>
+                <p>${a.content}</p>
+                <p><em>Qoraa: ${a.author}</em></p>
+                <button onclick="approveArticle(${i})">Ogolow Maqaalka</button>
+                <button onclick="rejectArticle(${i})" style="background:#a83232; margin-left:10px;">Diid Maqaalka</button>
+            `;
+            pendingDiv.appendChild(div);
+        });
+    }
+
+    function approveArticle(index) {
+        const approved = pendingArticles.splice(index,1)[0];
+        articles.unshift(approved);
+        renderPending();
+        renderArticles();
+    }
+
+    function rejectArticle(index) {
+        pendingArticles.splice(index,1);
+        renderPending();
+    }
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const location = document.getElementById('location').value.trim();
+        const title = document.getElementById('title').value.trim();
+        const content = document.getElementById('content').value.trim();
+
+        if(name && location && title && content) {
+            pendingArticles.unshift({author: `${name} - ${location}`, title, content});
+            renderPending();
+            form.reset();
+            alert('Maqaalkii waa la soo gudbiyey, sug ogolaanshaha maamulka.');
+        }
+    });
+
+    renderArticles();
+    renderPending();
+</script>
+
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
